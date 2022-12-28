@@ -1,0 +1,94 @@
+@import "./variables";
+%heading {
+  font-family: $font-display;
+  font-weight: 400;
+}
+
+.heading-1 {
+  @extend %heading;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.heading-3 {
+  @extend %heading;
+  font-size: 1.3rem;
+  color: $color-primary-light;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.heading-4 {
+  @extend %heading;
+  font-size: 1rem;
+  color: $color-grey-dark-2;
+  margin: 12px;
+}
+
+.btn {
+  background: linear-gradient(
+    90deg,
+    $color-primary-light 0%,
+    $color-primary-dark 100%
+  );
+  color: #fff;
+  border: none;
+
+  border-radius: 50px;
+  font-family: $font-display;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+
+  &__link {
+    font-size: 1.2rem;
+  }
+  &__dialog {
+    padding: 1rem 4rem;
+  }
+
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      $color-primary-dark 0%,
+      $color-primary-light 100%
+    );
+  }
+  &:disabled {
+    color: $color-grey-light-1;
+    background: $color-grey-light-2;
+  }
+
+  &__download {
+    background: none;
+    color: $color-secondary;
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+      opacity: 0.9;
+      color: #fff;
+      background: $color-secondary;
+    }
+  }
+}
+
+.buttons-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-btn {
+  font-family: $font-display;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+}

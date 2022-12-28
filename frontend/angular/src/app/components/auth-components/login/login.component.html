@@ -1,0 +1,57 @@
+<div class="container">
+    <mat-card class="form">
+        <mat-card-header>
+            <mat-card-title class="heading-3">
+                Login
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="login__container">
+
+             <img class="login__image" src="../../../../assets/general-images/shoppingonline.jpg"> 
+
+            <div class="card__content">
+                <form [formGroup]="loginForm" class="form">
+                    <mat-form-field class="form__field" appearance="standard">
+                        <mat-label>Enter your email</mat-label>
+                        <input matInput placeholder="pat@example.com" formControlName="email" required>
+                        <mat-icon class="input-icon" matSuffix>mail</mat-icon>
+                        <mat-error class="form__error" *ngIf="loginForm.get('email')?.errors">
+                            {{getErrorMessage('email')}}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="form__field">
+                        <mat-label>Enter your password</mat-label>
+                        <input matInput type="text" formControlName="password" #userPassword minlength="6"
+                            [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon class="input-icon" style="margin-bottom: 0.5rem">{{ hide ? 'visibility_off' :
+                                'visibility' }}
+                            </mat-icon>
+                        </button>
+                        <mat-hint style="color:#333" align="end">{{ userPassword.value.length }} / 6</mat-hint>
+                        <mat-error class="form__error" *ngIf="loginForm.get('password')?.errors">
+                            {{getErrorMessage('password')}}</mat-error>
+                    </mat-form-field>
+                </form>
+            </div>
+
+        </mat-card-content>
+        <mat-card-actions class="card-actions">
+            <!-- <re-captcha class="reCaptcha" (resolved)="getToken($event)" (error)="onError($event)" errorMode="handled"
+                [siteKey]="siteKey">
+            </re-captcha>
+            <mat-error class="form__error" *ngIf="tokenError">Required
+            </mat-error> -->
+            <button class="btn" (click)="signIn()">
+                Log In
+            </button>
+        </mat-card-actions>
+        <mat-card-footer class="card__footer">
+            <a routerLink="/authentication/forgot-password">Forgot your Password ?</a>
+            <span>Don't have an account yet?<a routerLink="/authentication/registration" class="sign-up"> Sign
+                    Up</a></span>
+        </mat-card-footer>
+    </mat-card>
+
+</div>

@@ -1,0 +1,24 @@
+@import "../abstracts/variables";
+.container {
+  width: 90vw;
+  position: absolute;
+  top: 20vh;
+  right: 5vw;
+  left: 5vw;
+  z-index: 100;
+  font-family: $font-display;
+  &__cart {
+    display: grid;
+    grid-template-columns: 80%;
+    margin: 10px;
+    gap: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    height: 90%;
+  }
+  &__wapper {
+    background-color: #495057;
+    border-radius: 5px;
+  }
+}

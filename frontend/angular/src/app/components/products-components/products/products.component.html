@@ -1,0 +1,16 @@
+<div class="container">
+    <div *ngIf="products?.length === 0" class="no-results-container">
+        <div class="title">
+            No Results
+        </div>
+        <div class="content">
+            Sorry, we couldn't find any products that matched your search,
+            <span>Please try again with a different name</span>
+        </div>
+    </div>
+    <div class="container__cards">
+        <app-product-card *ngFor="let product of products" [product]="product" (deletProduct)="delete($event)"
+            [categoryName]="categoryName">
+        </app-product-card>
+    </div>
+</div>

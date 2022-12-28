@@ -1,0 +1,48 @@
+table {
+  width: 100%;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+}
+
+.mat-form-field {
+  font-size: 16px;
+  width: 100%;
+}
+
+.table-select {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+::ng-deep.mat-sort-header-container {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+td,
+th {
+  width: 13%;
+  text-align: center;
+}
+
+.dialog__content {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.filter {
+  background-color: #f1f3f5;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=orders-view.component.css.map */

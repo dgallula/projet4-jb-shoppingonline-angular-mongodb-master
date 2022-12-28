@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+@import "abstracts/variables";
+html,
+body {
+  height: 100vh;
+}
+body {
+  margin: 0;
+  font-family: $font-display;
+  font-weight: 400;
+}
+
+.mat-card,
+.mat-expansion-panel-headerl {
+  font-family: $font-display;
+}
+.mat-card-header {
+  justify-content: center;
+}
+
+.snackbar {
+  text-align: center;
+  color: #fff;
+  &__success {
+    background-color: #51cf66;
+  }
+  &__info {
+    background-color: #4263eb;
+  }
+  &__danger {
+    background-color: #ff6b6b;
+    color: #e9ecef;
+  }
+}
+
+@import "abstracts/typography";
+@import "abstracts/variables";
+
+@import "layout/grid";
+@import "layout/container";
+@import "layout/images";
+
+@import "components/card";
+@import "components/form";
+@import "components/nav-bar";

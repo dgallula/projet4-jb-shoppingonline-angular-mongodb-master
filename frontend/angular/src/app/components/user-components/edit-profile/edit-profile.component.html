@@ -1,0 +1,70 @@
+<div class="container">
+    <mat-card class="form">
+        <mat-card-header>
+            <mat-card-title class="heading-3">
+                Edit your profile
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card__content">
+            <div [formGroup]="userForm">
+                <mat-form-field class="card__content__form form__field" appearance="standard">
+                    <mat-label>Enter your first name</mat-label>
+                    <input matInput [(ngModel)]="firstName" formControlName="fName" required>
+                    <mat-error class="form__error" *ngIf="userForm.get('fName')?.errors">{{getErrorMessage("fName")}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="card__content__form form__field" appearance="standard">
+                    <mat-label>Enter your last name</mat-label>
+                    <input matInput [(ngModel)]="lastName" formControlName="lName" required>
+                    <mat-error class="form__error" *ngIf="userForm.get('lName')?.errors">{{getErrorMessage("lName")}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="card__content__form form__field" appearance="standard">
+                    <mat-label>Enter your ID number</mat-label>
+                    <input matInput [(ngModel)]="id" formControlName="userId" required>
+                    <mat-error class="form__error" *ngIf="userForm.get('userId')?.errors">{{getErrorMessage("userId")}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="card__content__form form__field" appearance="standard">
+                    <mat-label>Enter your phone number</mat-label>
+                    <input matInput type="text" appPhoneNumber [(ngModel)]="phone" formControlName="tel" required>
+                    <mat-icon matSuffix>phone</mat-icon>
+                    <mat-hint>052-1234567</mat-hint>
+                    <mat-error class="form__error" *ngIf="userForm.get('tel')?.errors">{{getErrorMessage("tel")}}
+                    </mat-error>
+                </mat-form-field>
+                <div>
+                    <mat-form-field class="card__content__form form__field" appearance="standard">
+                        <mat-label>Enter your city</mat-label>
+                        <input matInput [(ngModel)]="userCity" formControlName="city" required>
+                        <mat-error class="form__error" *ngIf="userForm.get('city')?.errors">{{getErrorMessage("city")}}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="card__content__form form__field" appearance="standard">
+                        <mat-label>Enter your street</mat-label>
+                        <input matInput [(ngModel)]="userStreet" formControlName="street" required>
+                        <mat-error class="form__error" *ngIf="userForm.get('street')?.errors">
+                            {{getErrorMessage("street")}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="card__content__form form__field" appearance="standard">
+                        <mat-label>Enter your house number</mat-label>
+                        <input matInput [(ngModel)]="userHouse" formControlName="house" required>
+                        <mat-error class="form__error" *ngIf="userForm.get('house')?.errors">
+                            {{getErrorMessage("house")}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="card__content__form form__field" appearance="standard">
+                        <mat-label>Enter your zip code</mat-label>
+                        <input matInput [(ngModel)]="userZipCode" formControlName="zipCode" required>
+                        <mat-error class="form__error" *ngIf="userForm.get('zipCode')?.errors">
+                            {{getErrorMessage("zipCode")}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions class="card-actions">
+            <button class="btn" color="primary" (click)="update()">
+                Update
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

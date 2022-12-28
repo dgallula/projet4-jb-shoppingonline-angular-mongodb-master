@@ -1,0 +1,14 @@
+<div class="container__cart">
+    <div *ngFor="let product of displayProducts">
+        <app-cart-products [displayProduct]="product" (removeItem)="updateCart($event)">
+        </app-cart-products>
+    </div>
+</div>
+
+<mat-card-footer class="card__footer">
+    Overall Price: {{overallPrice}}
+    <br>
+    <button class="btn btn__download" [disabled]="displayProducts.length === 0" (click)="placeOrder()">
+        Place order
+    </button>
+</mat-card-footer>

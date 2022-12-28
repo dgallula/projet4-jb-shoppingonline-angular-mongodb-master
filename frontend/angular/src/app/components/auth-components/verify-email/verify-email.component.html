@@ -1,0 +1,26 @@
+<div class="container">
+
+    <mat-card class="form">
+        <mat-card-header>
+            <mat-card-title class="heading-3">
+                Thank You for Registering
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card__content">
+            <div *ngIf="userData as user">
+                <p>We have sent a confirmation email to <strong>{{user.email}}</strong>.</p>
+                <p class="text-center">Please check your email and click on the link to
+                    verfiy your email address.</p>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button class="btn" mat-raised-button (click)="SendMail()">
+                <mat-icon>redo</mat-icon>
+                Resend Verification Email
+            </button>
+        </mat-card-actions>
+        <mat-card-footer class="card__footer">
+            <span>Go back to?<a class="redirect" (click)="navigateToLogin()"> Sign in</a></span>
+        </mat-card-footer>
+    </mat-card>
+</div>

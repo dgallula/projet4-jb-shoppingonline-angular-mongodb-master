@@ -1,0 +1,374 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+}
+
+.mat-card,
+.mat-expansion-panel-headerl {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.mat-card-header {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.snackbar {
+  text-align: center;
+  color: #fff;
+}
+
+.snackbar__success {
+  background-color: #51cf66;
+}
+
+.snackbar__info {
+  background-color: #4263eb;
+}
+
+.snackbar__danger {
+  background-color: #ff6b6b;
+  color: #e9ecef;
+}
+
+.heading-1, .heading-3, .heading-4 {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+}
+
+.heading-1 {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.heading-3 {
+  font-size: 1.3rem;
+  color: #91a7ff;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.heading-4 {
+  font-size: 1rem;
+  color: #495057;
+  margin: 12px;
+}
+
+.btn {
+  background: -webkit-gradient(linear, left top, right top, from(#91a7ff), to(#339af0));
+  background: linear-gradient(90deg, #91a7ff 0%, #339af0 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn__link {
+  font-size: 1.2rem;
+}
+
+.btn__dialog {
+  padding: 1rem 4rem;
+}
+
+.btn:hover {
+  background: -webkit-gradient(linear, left top, right top, from(#339af0), to(#91a7ff));
+  background: linear-gradient(90deg, #339af0 0%, #91a7ff 100%);
+}
+
+.btn:disabled {
+  color: #f1f3f5;
+  background: #dee2e6;
+}
+
+.btn__download {
+  background: none;
+  color: #b197fc;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn__download:hover {
+  opacity: 0.9;
+  color: #fff;
+  background: #b197fc;
+}
+
+.buttons-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.nav-btn {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+}
+
+.container__cards {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(100px, 300px))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+  gap: 1rem;
+}
+
+.container__charts {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (50%)[2];
+      grid-template-columns: repeat(2, 50%);
+  gap: 2rem;
+}
+
+.container {
+  width: 90vw;
+  position: absolute;
+  top: 20vh;
+  right: 5vw;
+  left: 5vw;
+  z-index: 100;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.container__cart {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 80%;
+      grid-template-columns: 80%;
+  margin: 10px;
+  gap: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 90%;
+}
+
+.container__wapper {
+  background-color: #495057;
+  border-radius: 5px;
+}
+
+.image__credit-card {
+  width: 80px;
+  height: 85px;
+}
+
+.image__border {
+  border: 4px solid #b197fc;
+}
+
+.card {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.card__disabled {
+  background-color: #495057;
+  opacity: 0.5;
+}
+
+.card__disabled-text {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  font-size: 2rem;
+}
+
+.card__title-group {
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+}
+
+.card__content {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px;
+}
+
+.card__content__form {
+  margin: 10px !important;
+}
+
+.card__cart-product {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+}
+
+.card__item-product {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.card__cart-text {
+  margin: 10px;
+  width: 100%;
+}
+
+.card__cart-text strong {
+  padding: 10px;
+}
+
+.card__picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.card__file-input {
+  display: none;
+}
+
+.card__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.15rem;
+}
+
+.card__footer {
+  text-align: center;
+  line-height: 2;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.card__buttons {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form__field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.form__error {
+  font-size: 14px;
+}
+
+.nav-bar {
+  position: -webkit-sticky;
+  position: sticky;
+  color: #f1f3f5;
+  background-image: -webkit-gradient(linear, left top, right top, from(#91a7ff), color-stop(50%, #b197fc), to(#339af0));
+  background-image: linear-gradient(to right, #91a7ff 0%, #b197fc 50%, #339af0 100%);
+}
+
+.nav-bar__menu {
+  width: 200px;
+}
+
+.nav-bar__menu__title {
+  width: 200px;
+}
+
+.nav-bar__menu__btn {
+  font-family: "Josefin Sans", sans-serif !important;
+}
+/*# sourceMappingURL=styles.css.map */

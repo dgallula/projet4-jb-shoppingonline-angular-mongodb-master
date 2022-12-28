@@ -1,0 +1,57 @@
+::ng-deep.mat-expansion-panel-content,
+.mat-radio-button,
+.mat-expansion-panel-header {
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.accordion__font {
+  font-family: "Josefin Sans", sans-serif !important;
+}
+
+.role {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute !important;
+      justify-content: space-around !important;
+  margin-top: 15px;
+  margin-left: 0;
+}
+
+.role__label {
+  font-weight: 600;
+}
+
+.role__radio-buttons-group {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.role__radio-button {
+  margin-left: 10px;
+}
+/*# sourceMappingURL=registration.component.css.map */

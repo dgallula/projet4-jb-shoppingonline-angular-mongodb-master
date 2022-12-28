@@ -1,0 +1,129 @@
+<div class="container">
+    <mat-vertical-stepper class="order__stepper" [linear]="true" #stepper>
+        <mat-step class="order__stepper-step">
+            <div>
+                <ng-template matStepLabel>Order Summary</ng-template>
+                <div class="container__cards">
+                    <div *ngFor=" let displayProduct of orderProducts">
+                        <app-order-item [displayItem]="displayProduct"></app-order-item>
+                    </div>
+                </div>
+                <div class="order__total-price">
+                    Total Price: {{orderTotalPrice}}
+                </div>
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step class="order__stepper-step" [stepControl]="addressForm">
+            <form class="form" [formGroup]="addressForm">
+                <ng-template matStepLabel>Fill out your address</ng-template>
+                <mat-form-field class="form__field">
+                    <mat-label>City:</mat-label>
+                    <input matInput formControlName="city" required>
+                    <mat-error class="form__error" class="form__error" *ngIf="addressForm.get('city')?.errors">
+                        {{getErrorMessage("city")}}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form__field">
+                    <mat-label>Street:</mat-label>
+                    <input matInput formControlName="street" required>
+                    <mat-error class="form__error" *ngIf="addressForm.get('street')?.errors">
+                        {{getErrorMessage("street")}}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form__field">
+                    <mat-label>House number:</mat-label>
+                    <input matInput type="number" formControlName="house" required>
+                    <mat-error class="form__error" *ngIf="addressForm.get('house')?.errors">{{getErrorMessage("house")}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form__field">
+                    <mat-label>ZipCode:</mat-label>
+                    <input matInput type="number" formControlName="zipCode" required>
+                    <mat-error class="form__error" *ngIf="addressForm.get('zipCode')?.errors">
+                        {{getErrorMessage("zipCode")}}</mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext [disabled]="addressForm.invalid"
+                        (click)="setOrderAddress()">Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="shippingDateForm" class="order__stepper-step">
+            <ng-template matStepLabel>Choose shipping date</ng-template>
+            <form class="form">
+                <mat-form-field class="form__field" color="primary" appearance="standard">
+                    <mat-label>Shipping date</mat-label>
+                    <input matInput [matDatepicker]="picker2" [min]="minDate" (dateInput)="selectedDate( $event)"
+                        [readonly]="true">
+                    <mat-datepicker-toggle matSuffix [for]="picker2" [disabled]="false">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker2 color="primary" [disabled]="false"></mat-datepicker>
+                </mat-form-field>
+                <mat-error class="form__error" *ngIf="deliveryDateError">The date you selected is full, please select
+                    another date
+                </mat-error>
+            </form>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext
+                    [disabled]="deliveryDateError || shippingDateForm.invalid">Next</button>
+            </div>
+        </mat-step>
+        <mat-step class="order__stepper-step" [stepControl]="paymentForm">
+            <div class="credit-cards-images">
+                <img [ngClass]="{'image__border image__scale': credit.value.startsWith('4')}"
+                    src="../../../../assets/general-images/Visa-logo.png" class="image__credit-card">
+                <img [ngClass]="{'image__border image__scale': credit.value.startsWith('5')}"
+                    src="../../../../assets/general-images/Mastercard-logo.png" class="image__credit-card">
+                <img [ngClass]="{'image__border image__scale': credit.value.startsWith('3')}"
+                    src="../../../../assets/general-images/american-express-logo.png" class="image__credit-card">
+                <img [ngClass]="{'image__border image__scale': credit.value.startsWith('6')}"
+                    src="../../../../assets/general-images/discover-logo.png" class="image__credit-card">
+            </div>
+            <form class="form" [formGroup]="paymentForm">
+                <ng-template matStepLabel>Payment</ng-template>
+                <mat-form-field class="form__field">
+                    <mat-label>Card number:</mat-label>
+                    <input matInput #credit type="text" appCreditCard formControlName="cardNumber" required>
+                    <mat-error class="form__error" *ngIf="paymentForm.get('cardNumber')?.errors">
+                        {{getErrorMessage("cardNumber")}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form__field">
+                    <mat-label>Expiration Date:</mat-label>
+                    <input matInput type="text" appExpirationDate formControlName="valid" required>
+                    <mat-error class="form__error" *ngIf="paymentForm.get('valid')?.errors">{{getErrorMessage("valid")}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form__field">
+                    <mat-label>cvv:</mat-label>
+                    <input matInput type="number" formControlName="cvv" required>
+                    <mat-error class="form__error" class="form__error" *ngIf="paymentForm.get('cvv')?.errors">
+                        {{getErrorMessage("cvv")}}</mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext (click)="setOrderPayment()">Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step class="order__stepper-step" [stepControl]="paymentForm">
+            <form [formGroup]="paymentForm">
+                <ng-template matStepLabel>Confirm</ng-template>
+                <h1>
+                    Last chance to change order details.
+                </h1>
+                <h5>After clicking on the confirmation you will not be able to change the order</h5>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button class="btn" (click)="submit()">Confirm</button>
+                </div>
+            </form>
+        </mat-step>
+        <ng-template matStepperIcon="phone">
+            <mat-icon>call_end</mat-icon>
+        </ng-template>
+    </mat-vertical-stepper>
+</div>

@@ -1,0 +1,40 @@
+@import "../../../../sass/abstracts/variables";
+table {
+  width: 100%;
+  font-family: $font-display;
+  font-weight: 400;
+}
+
+.mat-form-field {
+  font-size: 16px;
+  width: 100%;
+}
+
+.table-select {
+  font-family: $font-display;
+}
+
+::ng-deep.mat-sort-header-container {
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+td,
+th {
+  width: 13%;
+  text-align: center;
+}
+
+.dialog__content {
+  display: flex !important;
+  justify-content: space-around;
+}
+
+.filter {
+  background-color: $color-grey-light-1;
+  margin-bottom: 10px;
+
+  display: flex;
+  justify-content: center;
+}

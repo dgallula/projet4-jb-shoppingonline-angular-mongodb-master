@@ -1,0 +1,47 @@
+<div class="container">
+    <mat-card class="form">
+        <mat-card-content>
+
+            <div class="card__info">
+                <mat-list role="list">
+                    <h3>First name: </h3>
+                    <p>{{user?.firstName}}</p>
+                    <h3>Last name: </h3>
+                    <p>{{user?.lastName}}</p>
+                    <h3>ID: </h3>
+                    <p>{{user?.userId}}</p>
+                    <h3>Email: </h3>
+                    <p>{{user?.email}}</p>
+                    <h3>Phone: </h3>
+                    <p>{{user?.phoneNumber}}</p>
+                    <h3>Address: </h3>
+                    <div class="address-container">
+                        <div>
+                            <h4>City: </h4>
+                            <p>{{user?.address?.city}}</p>
+                        </div>
+                        <div>
+                            <h4>Street: </h4>
+                            <p>{{user?.address?.street}}</p>
+                        </div>
+                        <div>
+                            <h4>House: </h4>
+                            <p>{{user?.address?.houseNumber}}</p>
+                        </div>
+                        <div>
+                            <h4>Zip code: </h4>
+                            <p>{{user?.address?.zipCode}}</p>
+                        </div>
+                    </div>
+                </mat-list>
+            </div>
+        </mat-card-content>
+        <mat-card-footer class="card__footer">
+            <mat-card-actions class="card__buttons">
+                <button mat-icon-button (click)="edit()" color="primary"> Edit
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card-footer>
+    </mat-card>
+</div>

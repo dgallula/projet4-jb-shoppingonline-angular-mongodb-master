@@ -1,0 +1,29 @@
+<h1 mat-dialog-title class="heading-3">Order Details</h1>
+<div mat-dialog-content>
+    <div *ngFor="let product of data.orderProducts">
+        <mat-card style="margin: 15px;">
+            <mat-card-content style="display: flex; justify-content:space-around;">
+                <div>
+                    <img style="width: 100px; height:90px ;" src="../../../../assets/products-images/{{product.image}}">
+                </div>
+                <div>
+                    <p class="card__cart-text"><strong>Name:</strong>{{product.name}}</p>
+                    <p class="card__cart-text"><strong>Price:</strong>{{product.price}}</p>
+                    <p class="card__cart-text"><strong>quantity:</strong>{{product.quantity}}</p>
+                    <p class="card__cart-text"><strong>TotalPrice:</strong>{{product.totalPrice}}</p>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<div style="display: flex; justify-content: space-around; align-items: center;">
+    <h5>Total Products: </h5> {{data.orderProducts.length}}
+    <h5>Total Price: </h5> {{data.orderTotalPrice}}
+</div>
+<div mat-dialog-actions class="buttons-group">
+    <button class="btn btn__dialog" (click)="onNoClick()">OK</button>
+    <button class="btn btn__download" (click)="downloadFile(data.orderId)">
+        <mat-icon class="icon">cloud_download</mat-icon> Download
+    </button>
+</div>

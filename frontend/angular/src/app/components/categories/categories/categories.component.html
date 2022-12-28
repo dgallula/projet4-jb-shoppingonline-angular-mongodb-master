@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="container__cards">
+        <div *ngFor="let category of allCategories">
+            <mat-card class="card">
+                <mat-card-title-group class="card__title-group">
+                    <mat-card-title class="heading-3">{{category.name.replaceAll('&', " and ")}}</mat-card-title>
+                </mat-card-title-group>
+                <mat-card-content class="card__content">
+                    <img class="card__picture" src="../../../../../../assets/categoriesImeges/{{category.image}}">
+                    <button class="btn" routerLink="/products/{{category.name}}" color="primary">Show
+                        products</button>
+                </mat-card-content>
+                <mat-card-footer class="card__footer">
+                    <mat-card-actions *ngIf="auth.getUser().role === 'manager'" class="card__buttons">
+                        <button mat-icon-button (click)="editCategory(category)" color="primary">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="delCategory(category)" color="warn">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </mat-card-actions>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+</div>

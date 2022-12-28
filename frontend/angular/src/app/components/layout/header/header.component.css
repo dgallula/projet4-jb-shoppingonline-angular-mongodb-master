@@ -1,0 +1,31 @@
+.banner-innerpage {
+  padding: 50px 0 33.5px;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.75;
+  max-height: 10%;
+}
+
+.title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.banner-innerpage .title {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 40px;
+  top: 0;
+}
+
+.banner-innerpage .subtitle {
+  color: #ffffff;
+  top: 15vh;
+}
+/*# sourceMappingURL=header.component.css.map */

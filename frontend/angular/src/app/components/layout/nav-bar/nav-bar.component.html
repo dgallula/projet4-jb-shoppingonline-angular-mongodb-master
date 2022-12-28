@@ -1,0 +1,88 @@
+<nav>
+    <mat-toolbar class="nav-bar">
+        <span>ShoppingOnline app</span>
+        <div *ngIf="auth.isLoggedIn">
+            <ng-container *ngIf="auth.getUser().role === 'manager'">
+                <button class="nav-btn" mat-button routerLink="/dashboard">
+                    Dashboard</button>
+                <button class="nav-btn" mat-button routerLink="/categories/add">
+                    Add Category</button>
+                <button class="nav-btn" mat-button routerLink="/products/add"> Add
+                    Product</button>
+            </ng-container>
+            <button mat-button class="nav-btn" [matMenuTriggerFor]="menu">Categories</button>
+            <mat-menu #menu="matMenu" class="nav-bar__menu">
+                <mat-grid-list cols="2" rowHeight="2:1">
+                    <mat-grid-tile *ngFor="let category of categoriesMenu">
+                        <button class="menu__btn" (click)="navigateMenu(category.name)"
+                            mat-menu-item>{{category.name.replaceAll('&', ' and ')}}</button>
+                    </mat-grid-tile>
+                    <mat-divider></mat-divider>
+                </mat-grid-list>
+            </mat-menu>
+            <button class="nav-btn" mat-button routerLink="/orders">All Orders</button>
+        </div>
+        <span class="example-spacer"></span>
+        <div *ngIf="auth.isLoggedIn">
+            <form class="form">
+                <mat-form-field class="search__form-field form__field" appearance="standard">
+                    <mat-label>Search</mat-label>
+                    <input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto">
+                    <button mat-icon-button matSuffix (click)="search()">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+        </div>
+        <span class="example-spacer"></span>
+
+        <button *ngIf="auth.isLoggedIn && auth.getUser().role === 'user'" type="button" mat-button
+            (click)="sidenav.toggle()">
+            <mat-icon>
+                shopping_cart
+            </mat-icon> Cart {{numOfProductsInCart}}
+        </button>
+
+        <div *ngIf="auth.isLoggedIn">
+            <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button class="menu-title" mat-menu-item disabled>
+                    Welcome,&nbsp;<span>{{auth.getUser()?.displayName}}</span>
+                </button>
+                <mat-divider></mat-divider>
+                <button *ngIf="auth.getUser().role  === 'manager'" routerLink="authentication/add-employee"
+                    mat-menu-item>
+                    <mat-icon>person_add</mat-icon>
+                    <span>Add Employee</span>
+                </button>
+                <button routerLink="/profile" mat-menu-item>
+                    <mat-icon>manage_accounts</mat-icon>
+                    <span>Profile</span>
+                </button>
+                <button (click)="signOut()" mat-menu-item>
+                    <mat-icon>logout</mat-icon>
+                    <span>Log-out</span>
+                </button>
+            </mat-menu>
+        </div>
+    </mat-toolbar>
+
+    <mat-sidenav-container style="overflow: none;">
+        <mat-sidenav position="end" #sidenav>
+            <app-cart (click)="sidenav.toggle()" (updateCartLength)="updateCartProducts($event)"></app-cart>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div style="height: 90vh; ">
+                <app-header *ngIf="auth.isLoggedIn"></app-header>
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</nav>

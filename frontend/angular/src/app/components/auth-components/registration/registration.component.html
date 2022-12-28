@@ -1,0 +1,173 @@
+<div class="container">
+    <mat-card class="form">
+        <mat-card-header>
+            <mat-card-title class="heading-3">
+                {{title}}
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card__content">
+            <mat-accordion class="example-headers-align accordion__font">
+                <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Personal data
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Type your information and password
+                            <mat-icon>account_circle</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <form [formGroup]="registerForm" class="form">
+                        <mat-form-field class="form__field" appearance="standard">
+                            <mat-label>Enter ID</mat-label>
+                            <input matInput formControlName="userId" required>
+                            <mat-error class="form__error" *ngIf="registerForm.get('userId')?.errors">
+                                {{getErrorMessage("userId")}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="form__field" appearance="standard">
+                            <mat-label>Enter first name</mat-label>
+                            <input matInput formControlName="fName" required>
+                            <mat-error class="form__error" *ngIf="registerForm.get('fName')?.errors">
+                                {{getErrorMessage("fName")}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="form__field" appearance="standard">
+                            <mat-label>Enter last name</mat-label>
+                            <input matInput formControlName="lName" required>
+                            <mat-error *ngIf="registerForm.get('lName')?.errors">{{getErrorMessage("lName")}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="form__field" appearance="standard">
+                            <mat-label>Enter phone number</mat-label>
+                            <input matInput type="text" appPhoneNumber formControlName="tel" required>
+                            <mat-icon class="input-icon" matSuffix>phone</mat-icon>
+                            <mat-hint>052-1234567</mat-hint>
+                            <mat-error class="form__error" *ngIf="registerForm.get('tel')?.errors">
+                                {{getErrorMessage("tel")}}</mat-error>
+                        </mat-form-field>
+
+                        <div class="role" *ngIf="isLogin">
+                            <mat-label class="role__label">Role: </mat-label>
+                            <mat-radio-group class="role__radio-buttons-group" formControlName="role">
+                                <mat-radio-button color="primary" class="role__radio-button" *ngFor="let role of roles"
+                                    [value]="role">{{ role }}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                            <mat-error class="form__error" *ngIf="roleError">
+                                required
+                            </mat-error>
+                        </div>
+
+                        <mat-form-field class="form__field" appearance="standard">
+                            <mat-label>Enter email</mat-label>
+                            <input matInput placeholder="pat@example.com" formControlName="email" required>
+                            <mat-icon class="input-icon" matSuffix>mail</mat-icon>
+                            <mat-error *ngIf="registerForm.get('email')?.errors">{{getErrorMessage('email')}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="form__field">
+                            <mat-label>Enter password</mat-label>
+                            <input matInput type="text" formControlName="password" #userPassword minlength="6"
+                                [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon class="input-icon" style="margin-bottom: 0.5rem">{{ hide ? 'visibility_off' :
+                                    'visibility'
+                                    }}</mat-icon>
+                            </button>
+                            <mat-hint style="color:#333" align="end">{{ userPassword.value.length }} / 6</mat-hint>
+                            <mat-error class="form__error" *ngIf="registerForm.get('password')?.errors">
+                                {{getErrorMessage('password')}}
+                            </mat-error>
+
+                        </mat-form-field>
+                    </form>
+                    <mat-action-row>
+                        <button mat-button color="primary" [disabled]="registerForm.invalid"
+                            (click)="nextStep()">Next</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="step === 1" [disabled]="registerForm.invalid" (opened)="setStep(1)"
+                    hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Address
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Type the address information
+                            <mat-icon>map</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <form [formGroup]="addressForm">
+                        <ng-template matStepLabel>Fill out your address</ng-template>
+                        <mat-form-field class="form__field">
+                            <mat-label>City:</mat-label>
+                            <input matInput formControlName="city" required>
+                            <mat-error class="form__error" *ngIf="addressForm.get('city')?.errors">
+                                {{getErrorMessage("city")}}</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="form__field">
+                            <mat-label>Street:</mat-label>
+                            <input matInput formControlName="street" required>
+                            <mat-error class="form__error" *ngIf="addressForm.get('street')?.errors">
+                                {{getErrorMessage("street")}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="form__field">
+                            <mat-label>House number:</mat-label>
+                            <input matInput type="number" formControlName="house" required>
+                            <mat-error class="form__error" *ngIf="addressForm.get('house')?.errors">
+                                {{getErrorMessage("house")}}</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="form__field">
+                            <mat-label>Zip Code:</mat-label>
+                            <input matInput type="number" formControlName="zipCode" required>
+                            <mat-error class="form__error" *ngIf="addressForm.get('zipCode')?.errors">
+                                {{getErrorMessage("zipCode")}}
+                            </mat-error>
+                        </mat-form-field>
+
+                    </form>
+                    <mat-action-row>
+                        <button mat-button color="warn" (click)="prevStep()">Back</button>
+                        <button mat-button [disabled]="addressForm.invalid" (click)="nextStep()">Next</button>
+                    </mat-action-row>
+
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="step === 2" [disabled]="addressForm.invalid" (opened)="setStep(2)"
+                    hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Confirm
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Confirm And Register
+                            <mat-icon>date_range</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <mat-action-row>
+                        <button mat-button color="warn" (click)="prevStep()">Back</button>
+                        <button class="btn" [disabled]="registerForm.invalid || addressForm.invalid " (click)="add()">
+                            Add User
+                        </button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+        <mat-card-footer class="card__footer" *ngIf="!isLogin">
+            <span>Do you have an account? <a routerLink="/authentication/log-in">Log In</a></span>
+        </mat-card-footer>
+    </mat-card>
+
+</div>

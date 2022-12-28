@@ -1,0 +1,58 @@
+<div class="container">
+    <mat-form-field class="filter form__field" appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="_id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row._id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="orderDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Date </th>
+                <td mat-cell *matCellDef="let row"> {{row.orderDate | date}} </td>
+            </ng-container>
+            <ng-container matColumnDef="deliveryDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Delivery Date </th>
+                <td mat-cell *matCellDef="let row"> {{row.deliveryDate | date}} </td>
+            </ng-container>
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-form-field *ngIf="user.role !== 'user'" class="form__field" appearance="standard">
+                        <mat-label>Order Status</mat-label>
+                        <mat-select class="table-select" [(value)]="row.status"
+                            (selectionChange)="updateStatus(row._id, $event)">
+                            <mat-option></mat-option>
+                            <mat-option [value]="status.value" *ngFor="let status of statusArray">{{
+                                status.viewValue }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <ng-container *ngIf="user.role === 'user'">{{row.status}}</ng-container>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="totalPrice">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Price </th>
+                <td mat-cell *matCellDef="let row"> {{row.totalPrice}} </td>
+            </ng-container>
+            <ng-container matColumnDef="viewOrder">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> View Order </th>
+                <td mat-cell *matCellDef="let row">
+                    <button class="btn__link" mat-button (click)="openDialog(row.cart, row.totalPrice, row._id)"
+                        color="primary">
+                        View
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+</div>

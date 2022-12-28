@@ -1,0 +1,54 @@
+<div class="container">
+    <mat-card class="form">
+        <mat-card-header>
+            <mat-card-title class="heading-3">{{title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card__content">
+            <div [formGroup]="productForm">
+                <mat-form-field class="card__content__form form__field" MatFormFieldControl appearance="standard">
+                    <mat-label>Enter product name</mat-label>
+                    <input matInput type="text" [(ngModel)]="productName" formControlName="name" required>
+                    <mat-error class="form__error" *ngIf="productForm.get('name')?.errors">{{getErrorMessage("name")}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="card__content__form form__field" MatFormFieldControl appearance="standard">
+                    <mat-label>Enter product price</mat-label>
+                    <input matInput type="number" [(ngModel)]="productPrice" formControlName="price" required>
+                    <mat-error class="form__error" *ngIf="productForm.get('price')?.errors">{{getErrorMessage("price")}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="card__content__form form__field" MatFormFieldControl appearance="standard">
+                    <mat-label>Enter product stock</mat-label>
+                    <input matInput type="number" [(ngModel)]="productStock" formControlName="stock" required>
+                    <mat-error class="form__error" *ngIf="productForm.get('stock')?.errors">{{getErrorMessage("stock")}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="card__content__form form__field" appearance="standard">
+                    <mat-label>Choose category</mat-label>
+                    <mat-select [formControl]="productCategory">
+                        <mat-option *ngFor="let category of categories" [value]="category._id">
+                            {{category.name}}</mat-option>
+                    </mat-select>
+                    <mat-error class="form__error" *ngIf="productCategory.hasError('required')">
+                        Please choose an category</mat-error>
+                </mat-form-field>
+                <div class="file-upload">
+                    <mat-label class="heading-4">Choose product image</mat-label>
+                    <input MatFormFieldControl accept="image/*" class="card__file-input" #fileUpload type="file"
+                        name="image" (change)="selectImage($event)">
+                    <div class="heading-4">
+                        {{fileName || "No file uploaded yet."}}
+                        <button mat-mini-fab color="primary" class="btn__upload" (click)="fileUpload.click()">
+                            <mat-icon>attach_file</mat-icon>
+                        </button>
+                    </div>
+                    <mat-error class="form__error" *ngIf="fileError">You have to choose an image</mat-error>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions class="card-actions">
+            <button class="btn" color="primary" (click)="onSubmit()"
+                [disabled]="productForm.invalid || productCategory.hasError('required')">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

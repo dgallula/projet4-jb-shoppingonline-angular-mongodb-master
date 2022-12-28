@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,oBAAoB,CAAC;EACnB,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,GAAG;EACZ,UAAU,EAAE,IAAI;EAChB,aAAa,EAAE,IAAI;EACnB,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,YAAY;EAC7B,gBAAgB,ECCE,OAAO;CDA1B;;AAGE,AAAD,eAAU,CAAC;EACT,WAAW,EAAE,OAAO;CACrB;;AACA,AAAD,mBAAc,CAAC;EACb,UAAU,EAAE,IAAI;CACjB",
+    "sources": [
+        "order.component.scss",
+        "../../../../sass/abstracts/_variables.scss"
+    ],
+    "names": [],
+    "file": "order.component.css"
+}

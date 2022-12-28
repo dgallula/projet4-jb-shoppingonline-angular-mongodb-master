@@ -1,0 +1,22 @@
+<div class="card">
+    <mat-card>
+        <mat-card-content class="card__cart-product">
+            <span>
+                <img style="width: 45px; height:45px ;"
+                    src="../../../../assets/products-images/{{displayProduct.image}}">
+            </span>
+            <span>
+                <p class="card__cart-text"><strong>Name:</strong>{{displayProduct.name}}</p>
+                <p class="card__cart-text"><strong>Price:</strong>{{displayProduct.price}}</p>
+                <p class="card__cart-text"><strong>quantity:</strong>{{displayProduct.quantity}}</p>
+                <p class="card__cart-text"><strong>TotalPrice:</strong>{{displayProduct.totalPrice}}</p>
+            </span>
+            <mat-card-actions>
+                <button mat-icon-button (click)="deleteCartItem(displayProduct.id, displayProduct.productId)"
+                    color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card-content>
+    </mat-card>
+</div>

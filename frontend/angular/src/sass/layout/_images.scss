@@ -1,0 +1,10 @@
+@import "../../sass/abstracts/variables";
+.image {
+  &__credit-card {
+    width: 80px;
+    height: 85px;
+  }
+  &__border {
+    border: 4px solid $color-secondary;
+  }
+}

@@ -1,0 +1,32 @@
+<div class="container">
+    <mat-card class="form">
+        <mat-card-header>
+            <mat-card-title class="heading-3">{{title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="card__content" [formGroup]="categoryForm">
+                <mat-form-field class="form__field" MatFormFieldControl appearance="standard">
+                    <mat-label>Enter category name</mat-label>
+                    <input matInput type="text" [(ngModel)]="categoryName" formControlName="name" required>
+                    <mat-error class="form__error" *ngIf="categoryForm.get('name')?.errors">{{getErrorMessage("name")}}
+                    </mat-error>
+                </mat-form-field>
+                <div class="file-upload">
+                    <mat-label class="heading-4">Choose category image</mat-label>
+                    <input MatFormFieldControl accept="image/*" class="card__file-input" #fileUpload type="file"
+                        name="image" (change)="selectImage($event)">
+                    <div class="heading-4">
+                        {{fileName || "No file uploaded yet."}}
+                        <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                            <mat-icon>attach_file</mat-icon>
+                        </button>
+                    </div>
+                    <mat-error class="form__error" *ngIf="fileError">You have to choose an image</mat-error>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions class="card-actions">
+            <button class="btn" [disabled]="categoryForm.invalid" (click)="onSubmit()">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

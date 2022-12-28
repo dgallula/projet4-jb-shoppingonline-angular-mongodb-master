@@ -1,0 +1,21 @@
+@import "../../../../sass/abstracts/variables";
+.login {
+  &__container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  &__image {
+    border: none;
+    border-radius: 15%;
+    box-shadow: 5px 5px 10px $color-grey-dark-1;
+  }
+}
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.reCaptcha {
+  margin-bottom: 50px;
+}
+

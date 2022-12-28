@@ -1,0 +1,11 @@
+.container__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+  gap: 1rem;
+}
+.container__charts {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+
+  gap: 2rem;
+}

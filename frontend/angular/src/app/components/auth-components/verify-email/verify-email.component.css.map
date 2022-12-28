@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,CAAC,CAAC;EACA,MAAM,EAAE,OAAO;EACf,KAAK,ECCW,OAAO;CDAxB",
+    "sources": [
+        "verify-email.component.scss",
+        "../../../../sass/abstracts/_variables.scss"
+    ],
+    "names": [],
+    "file": "verify-email.component.css"
+}

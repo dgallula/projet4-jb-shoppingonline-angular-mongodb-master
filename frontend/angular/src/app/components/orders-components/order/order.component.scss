@@ -1,0 +1,19 @@
+@import "../../../../sass/abstracts/variables";
+.credit-cards-images {
+  width: 100%;
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  background-color: $color-grey-dark-1;
+}
+
+.order {
+  &__stepper {
+    font-family: inherit;
+  }
+  &__total-price {
+    margin-top: 15px;
+  }
+}

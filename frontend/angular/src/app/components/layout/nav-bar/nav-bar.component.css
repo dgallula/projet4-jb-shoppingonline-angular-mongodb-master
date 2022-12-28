@@ -1,0 +1,26 @@
+.mat-drawer,
+.mat-drawer-inner-container {
+  overflow: hidden !important;
+}
+
+.mat-drawer-inner-container {
+  height: 90vh !important;
+}
+
+.example-spacer {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.search__form-field {
+  font-size: 0.9rem;
+  width: 200px;
+}
+
+::ng-deep .mat-menu-panel {
+  padding: 0 10px !important;
+  max-width: 400px !important;
+  width: 300px !important;
+}
+/*# sourceMappingURL=nav-bar.component.css.map */

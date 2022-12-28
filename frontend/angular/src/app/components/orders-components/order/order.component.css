@@ -1,0 +1,21 @@
+.credit-cards-images {
+  width: 100%;
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #868e96;
+}
+
+.order__stepper {
+  font-family: inherit;
+}
+
+.order__total-price {
+  margin-top: 15px;
+}
+/*# sourceMappingURL=order.component.css.map */

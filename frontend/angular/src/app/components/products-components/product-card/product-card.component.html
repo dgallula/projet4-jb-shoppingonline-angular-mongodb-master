@@ -1,0 +1,39 @@
+<mat-card class="card" [ngClass]="{'card__disabled':product!.stock === 0 && auth.getUser().role === 'user'}">
+    <mat-card-content class="card__content">
+        <img class="card__picture" src="../../../../../../assets/products-images/{{product!.image}}">
+        <div class="card__info">
+            <h4>{{product!.name}}</h4>
+            <p>Price: {{product!.price}} &#8362; {{(categoryName?.includes('Meat') || categoryName?.includes('Fruit')) ?
+                'for Kg' : "for unit" }}</p>
+            <p *ngIf="auth.getUser().role === 'manager'">Stock: {{product!.stock}}</p>
+            <div *ngIf="auth.getUser().role === 'user'">
+                <mat-form-field class="form__field" appearance="standard">
+                    <mat-label>Quantity:</mat-label>
+                    <mat-select [disabled]="product!.stock === 0" [formControl]="quantity">
+                        <mat-option *ngFor="let quantityAmount of quantityArray" [value]="quantityAmount">
+                            {{quantityAmount}}</mat-option>
+                    </mat-select>
+                    <mat-error class="form__error" *ngIf="quantity.hasError('required')">
+                        Please choose quantity</mat-error>
+                </mat-form-field>
+                <button mat-icon-button [disabled]="quantity.hasError('required') || product!.stock === 0"
+                    (click)="addToCart(product!)" color="primary">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                </button>
+            </div>
+            <div class="card__disabled-text" *ngIf="product!.stock === 0">
+                Out of stock
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-footer *ngIf="auth.getUser().role === 'manager'" class="card__footer">
+        <mat-card-actions class="card__buttons">
+            <button mat-icon-button (click)="editProduct(product!)" color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="delProduct(product!._id)" color="warn">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card-footer>
+</mat-card>

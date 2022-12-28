@@ -1,0 +1,22 @@
+@import "../abstracts/variables";
+.nav-bar {
+  position: sticky;
+  color: $color-grey-light-1;
+  background-image: linear-gradient(
+    to right,
+    $color-primary-light 0%,
+    $color-secondary 50%,
+    $color-primary-dark 100%
+  );
+
+  &__menu {
+    width: 200px;
+
+    &__title {
+      width: 200px;
+    }
+    &__btn {
+      font-family: $font-display !important;
+    }
+  }
+}
