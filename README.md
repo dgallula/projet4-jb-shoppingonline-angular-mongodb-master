@@ -1,6 +1,6 @@
 # Shopping App
 
-I built the site as part of a full stack course in John Bryce's Jerusalem> the site is a  online shopping site, where there is a presentation of products, categories, placing an order, adding to a shopping cart, and viewing previous orders.
+ the site is a  online shopping site, where there is a presentation of products, categories, placing an order, adding to a shopping cart, and viewing previous orders.
 we have a service of register  and login . if we forget the e mail , a email is sended to mailbox to get a new password. 
 Admin, who can add, update and delete products and categories as well as the update order status.
 An employee can view all the orders placed on the site and update the status of an order.
